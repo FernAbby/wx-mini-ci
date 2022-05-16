@@ -11,16 +11,20 @@
 ```
 进入微信公众平台 - 开发 - 开发管理
 
-![生成upload.key](https://cdn.nlark.com/yuque/0/2022/jpeg/284550/1652684016979-assets/web-upload/00612f12-fd74-4928-a1b7-f51fa2c25422.jpeg)
+![生成upload.key](./assets/小程序代码上传key.jpg)
+
+生成private.upload.key文件保存到根目录
+
+设置上传IP白名单或者直接关掉IP白名单验证
 
 ## 开发调试
-*开发者工具调试*
+**开发者工具调试**
 
 修改_config.js文件SEVER_ENV变量为test
 
 打开微信开发者工具预览和调试
 
-*真机预览*
+**真机预览**
 
 ```mini preview [env]```
 
