@@ -20,7 +20,7 @@
 ```
 进入微信公众平台 - 开发 - 开发管理
 
-![生成upload.key](./assets/小程序代码上传key.jpg)
+![生成upload.key](assets/image/小程序代码上传key.jpg)
 
 生成private.upload.key文件保存到根目录
 

@@ -45,6 +45,7 @@ const run = function() {
     // 代码上传到云端
     program.command('upload [env]').description('CI upload')
         .action((env) => {
+            shell.echo(chalk.green(`APP_ENV: ${APP_ENV}`));
             upload.create({
                 env: APP_ENV || env || 'test',
                 branch: GIT_BRANCH,
@@ -54,7 +55,5 @@ const run = function() {
 
     program.parse(process.argv);
 }
-
-shell.echo(chalk.green(`APP_ENV: ${APP_ENV}`));
 
 run();
