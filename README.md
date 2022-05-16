@@ -11,7 +11,7 @@
 ```
 进入微信公众平台 - 开发 - 开发管理
 
-[生成upload.key](https://cdn.nlark.com/yuque/0/2022/jpeg/284550/1652684016979-assets/web-upload/00612f12-fd74-4928-a1b7-f51fa2c25422.jpeg)
+![生成upload.key](https://cdn.nlark.com/yuque/0/2022/jpeg/284550/1652684016979-assets/web-upload/00612f12-fd74-4928-a1b7-f51fa2c25422.jpeg)
 
 ## 开发调试
 *开发者工具调试*
