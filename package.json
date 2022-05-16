@@ -1,5 +1,5 @@
 {
-  "name": "mini-ci",
+  "name": "wx-mini-ci",
   "version": "1.0.0",
   "description": "小程序CI工具",
   "main": "index.js",
