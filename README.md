@@ -1,10 +1,19 @@
-在项目根目录添加ci_config.js配置文件
+安装
+```
+    npm install wx-mini-ci --save-dev
+```
+
+```
+    yarn add wx-mini-ci
+```
+
+在项目根目录添加ci.config.js配置文件
 ```javascript
     module.exports = {
     appid: 'wxe848c704ff29506e',
     projectPath: './', // uni-app编译后路径
     keyPath: './private.upload.key', // 上传授权KEY
-    qrcodeOutput: './dist',
+    qrcodeOutput: './dist/qrcode.jpg',
     maxVersionNum: 5, // test|demo|prod每个环境至多留存10个版本
     build: false, // 是否需要编译 原生小程序不需要编译，需要编译的话写上编译的话，设置为true(目前默认为uni-app编译命令)
 };

@@ -46,7 +46,7 @@ const preview = async function({ pagePath, params, desc, config }) {
             project,
             desc,
             qrcodeFormat: 'image',
-            qrcodeOutputDest: `${getPath(qrcodeOutput)}/qrcode.jpg`,
+            qrcodeOutputDest: getPath(qrcodeOutput),
             pagePath: pagePath, // 预览页面
             searchQuery: params,  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
             setting: {

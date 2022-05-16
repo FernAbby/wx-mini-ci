@@ -32,12 +32,14 @@ const upload = async function({ version, desc, robot, config }) {
             project,
             onProgressUpdate: shell.echo,
             setting: {
-                es6: true,
-                es7: true,
-                minifyJS: true,
-                minifyWXML: true,
-                minifyWXSS: true,
-                minify: true,
+                es6: true, // es6转es5
+                es7: true, // 增强编译
+                minifyJS: true, // 上传压缩JS代码
+                minifyWXML: true, // 上传压缩wxml代码
+                minifyWXSS: true, // 上传压缩wxss代码
+                minify: true, // 上传时压缩所有代码，对应于微信开发者工具的 "上传时压缩代码"
+                codeProtect: false, // 对应于微信开发者工具的 "上传时进行代码保护"
+                autoPrefixWXSS: false, // 对应于微信开发者工具的 "上传时样式自动补全"
             },
         });
         shell.echo(chalk.green.bold('上传成功'));

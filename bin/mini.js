@@ -11,9 +11,9 @@ const { APP_ENV, GIT_BRANCH } = process.env;
 
 // 获取配置文件
 const exportConfig = function() {
-    const configPath = path.resolve(process.cwd(), './ci_config.js');
+    const configPath = path.resolve(process.cwd(), './ci.config.js');
     if (shell.find(configPath).code !== 0) {
-       shell.echo(chalk.red('请添加配置文件ci_config.js到根目录'));
+       shell.echo(chalk.red('请添加配置文件ci.config.js到根目录'));
        shell.exit(1);
     }
     return require(configPath);
