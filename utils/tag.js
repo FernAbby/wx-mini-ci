@@ -6,31 +6,28 @@ const { getPrefix, getVersionNumber } = require('./util');
 const questions = [{
     type: 'list',
     name: 'env',
+    prefix: '=>',
     message: '发布环境:',
     choices: DEFAULT_ENVIRONMENTS,
-    prefix: '=>',
     default: DEFAULT_ENVIRONMENTS[0],
 },{
     type: 'list',
     name: 'branch',
+    prefix: '=>',
     message: '发布分支:',
     choices: ['develop', 'master', 'current'],
-    prefix: '=>',
     default: 'develop',
     when: ({ env }) => env !== 'prod',
 }, {
     type: 'list',
     name: 'type',
+    prefix: '=>',
     message: '更新类型:',
     choices: [
-        // bug修复
-        'fix',
-        // 特性更新
-        'feature',
-        // 版本升级
-        'major',
+        'fix', // bug修复
+        'feature', // 特性更新
+        'major', // 版本升级
     ],
-    prefix: '=>',
     default: 'fix'
 }, {
     type: 'input',
@@ -113,13 +110,9 @@ const getLatestTag = function(prefix = 't') {
 
 // 创建tag
 const generateTag = function(version, desc, branch) {
-    if (branch !== 'current') {
-        const commitId = getLatestCommitId(branch);
-        childProcess.execSync(`git tag -a ${version} -m "${branch}: ${desc}" ${commitId} && git push origin --tags`);
-    } else {
-        const currentBranch = getCurrentBranch();
-        childProcess.execSync(`git tag -a ${version} -m "${currentBranch}: ${desc}" && git push origin --tags`);
-    }
+    const currentBranch = branch !== 'current' ? branch : getCurrentBranch();
+    const commitId = getLatestCommitId(currentBranch);
+    childProcess.execSync(`git tag -a ${version} -m "${currentBranch}: ${desc}" ${commitId} && git push origin --tags`);
 };
 
 const prompts = function (questionList) {

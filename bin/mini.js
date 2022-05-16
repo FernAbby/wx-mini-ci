@@ -11,7 +11,7 @@ const { APP_ENV, GIT_BRANCH } = process.env;
 
 // 获取配置文件
 const exportConfig = function() {
-    const configPath = path.resolve(__dirname, '../ci_config.js');
+    const configPath = path.resolve(process.cwd(), './ci_config.js');
     if (shell.find(configPath).code !== 0) {
        shell.echo(chalk.red('请添加配置文件ci_config.js到根目录'));
        shell.exit(1);
@@ -27,7 +27,6 @@ const run = function() {
     program.command('tag [env]')
         .description('generate a tag based on the currently committed version')
         .action((env) => {
-            console.log('执行===> tag', env);
             tag.create({
                 clearCache: true,
                 config,
@@ -38,20 +37,18 @@ const run = function() {
     program.command('preview [env]')
         .description('generate qrcode to preview current program')
         .action(() => {
-            console.log('执行===> preview');
             preview.create({
-                build,
+                config,
             });
         });
 
     // 代码上传到云端
     program.command('upload [env]').description('CI upload')
         .action((env) => {
-            console.log('执行===> upload');
             upload.create({
                 env: APP_ENV || env || 'test',
                 branch: GIT_BRANCH,
-                build,
+                config,
             });
         });
 

@@ -1,3 +1,4 @@
+const path = require('path');
 const { ENVIRONMENTS, ENV2PREFIX } = require('./contant');
 
 // 获取环境变量前缀
@@ -10,7 +11,12 @@ const getVersionNumber = function(version) {
     return version ? version.replace(/^[a-zA-Z]/i, '') : '0.0.0';
 }
 
+const getPath = function(pathUrl) {
+    return path.resolve(process.cwd(), pathUrl);
+}
+
 module.exports = {
     getPrefix,
     getVersionNumber,
+    getPath,
 };

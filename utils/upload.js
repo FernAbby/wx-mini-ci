@@ -1,9 +1,9 @@
 const ci = require('miniprogram-ci');
 const shell = require('shelljs');
 const chalk = require('chalk');
-const { getPrefix } = require('./util');
+const { getPrefix, getPath } = require('./util');
 const { runBuild } = require('./build');
-const { getTagsList } = require('./tag');
+const { getTagsList, getCurrentBranch } = require('./tag');
 
 const startIndex = { demo: 2, test: 1, prod: 0 }; // 机器人对应起始游标
 
@@ -15,12 +15,14 @@ const generateRobot = function(length, env, maxVersionNum) {
 const upload = async function({ version, desc, robot, config }) {
     shell.echo(chalk.green.bold('开始上传...'));
 
+    const { appid, projectPath, keyPath } = config;
+
     try {
         const project = new ci.Project({
             appid,
             type: 'miniProgram',
-            projectPath,
-            privateKeyPath: keyPath,
+            projectPath: getPath(projectPath),
+            privateKeyPath: getPath(keyPath),
             ignores: ['node_modules/**/*'],
         });
         await ci.upload({
@@ -46,8 +48,7 @@ const upload = async function({ version, desc, robot, config }) {
     }
 }
 
-const create = function ({ env, branch, build, config }) {
-    const { appid, projectPath, keyPath, maxVersionNum } = config;
+const create = function ({ env, branch, config }) {
     // if (['prod', 'demo'].includes(env) && branch !== 'master') {
     //     shell.echo(chalk.red('demo和生产环境发布只能在master分支发布!'));
     //     shell.echo(chalk.red(`当前分支: ${branch}`));
@@ -57,14 +58,14 @@ const create = function ({ env, branch, build, config }) {
     const tagsList = getTagsList(getPrefix(env));
     if (tagsList && tagsList[0] && tagsList[0].version) {
         const { version, desc } = tagsList[0];
-        const robot = generateRobot(tagsList.length, env);
         shell.echo(`当前版本：${version}`);
         shell.echo(`版本备注：${desc}`);
-        shell.echo(`发布分支：${branch}`);
 
-        if (build) {
+        if (config.build) {
             runBuild(env, version);
         }
+        const robot = generateRobot(tagsList.length, env, config.maxVersionNum);
+
         upload({ version, desc, robot, config });
     } else {
         shell.echo(chalk.red('拉取最新tag失败！！！'));
