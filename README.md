@@ -1,21 +1,28 @@
-安装
+### 安装
 ```
-    npm install wx-mini-ci --save-dev
+npm install wx-mini-ci --save-dev
 ```
-
+或
 ```
-    yarn add wx-mini-ci
+yarn add wx-mini-ci
 ```
-
+github下载了仓库代码的话,创建全局软连接
+```javascript
+yarn link 或 npm link
+```
+开发完成关闭软连接
+```javascript
+yarn unlink mini 或 npm unlink mini
+```
 在项目根目录添加ci.config.js配置文件
 ```javascript
     module.exports = {
-    appid: 'wxe848c704ff29506e',
-    projectPath: './', // uni-app编译后路径
-    keyPath: './private.upload.key', // 上传授权KEY
-    qrcodeOutput: './dist/qrcode.jpg',
-    maxVersionNum: 5, // test|demo|prod每个环境至多留存10个版本
-    build: false, // 是否需要编译 原生小程序不需要编译，需要编译的话写上编译的话，设置为true(目前默认为uni-app编译命令)
+        appid: 'wxe848c704ff29506e',
+        projectPath: './', // uni-app编译后路径
+        keyPath: './private.upload.key', // 上传授权KEY
+        qrcodeOutput: './dist/qrcode.jpg',
+        maxVersionNum: 5, // test|demo|prod每个环境至多留存10个版本
+        build: false, // 是否需要编译 原生小程序不需要编译，需要编译的话写上编译的话，设置为true(目前默认为uni-app编译命令)
 };
 ```
 进入微信公众平台 - 开发 - 开发管理
