@@ -4,7 +4,7 @@ npm install wx-mini-ci --save-dev
 ```
 或
 ```
-yarn add wx-mini-ci
+yarn add wx-mini-ci --save-dev
 ```
 github下载了仓库代码的话,创建全局软连接
 ```javascript
