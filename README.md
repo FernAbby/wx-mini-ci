@@ -14,6 +14,7 @@ yarn link 或 npm link
 ```javascript
 yarn unlink mini 或 npm unlink mini
 ```
+### 项目配置
 在项目根目录添加ci.config.js配置文件
 ```javascript
 module.exports = {
@@ -33,7 +34,7 @@ module.exports = {
 
 设置上传IP白名单或者直接关掉IP白名单验证
 
-## 开发调试
+### 开发调试
 **开发者工具调试**
 
 修改_config.js文件SEVER_ENV变量为test
@@ -46,7 +47,7 @@ module.exports = {
 
 生成二维码qrcode.jpg文件到根目录下的/dist文件夹
 
-## 发布
+### 发布
 1、提交MR到develop或master
 
 2、执行```mini tag [env]```命令，完成选择发布环境、发布分支、更新类型、更新描述命令行交互
