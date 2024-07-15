@@ -1,3 +1,6 @@
+# wx-mini-ci
+微信小程序CI工具
+
 ### 安装
 ```
 npm install wx-mini-ci --save-dev
@@ -7,11 +10,11 @@ npm install wx-mini-ci --save-dev
 yarn add wx-mini-ci --save-dev
 ```
 github下载了仓库代码的话,创建全局软连接
-```javascript
+```shell
 yarn link 或 npm link
 ```
 开发完成关闭软连接
-```javascript
+```shell
 yarn unlink mini 或 npm unlink mini
 ```
 ### 项目配置

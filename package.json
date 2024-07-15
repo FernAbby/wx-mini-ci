@@ -1,6 +1,6 @@
 {
   "name": "wx-mini-ci",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "小程序CI工具",
   "main": "index.js",
   "bin": {
